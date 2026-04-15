@@ -1,0 +1,1 @@
+Search through the deck and remove all Jokers, Red Face Cards and Red Aces. Place them off to the side, they are not used in this game.
