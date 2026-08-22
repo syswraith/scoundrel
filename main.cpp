@@ -1,18 +1,21 @@
 #include "deck.hpp"
+#include "player.hpp"
 #include <iostream>
-#include <memory>
 
 int main(void)
 {
     Card room[4]{};
 
-    std::unique_ptr<Deck> deck = std::make_unique<Deck>();
+    Deck deck;
+    Player player;
 
     for (int i = 0; i < 44; i++) {
-        Card card = deck->PopDeck();
+        Card card = deck.PopDeck();
         std::cout << i << " ";
         Card::PrintCard(card);
     }
+
+    player.PrintStats();
 
 
 //    EquipWeapon((Card){.type = DIAMONDS, .value = 10});
