@@ -17,7 +17,7 @@ public:
   Player() 
   {
     this->health = maxHealth;
-    this->weapon = (Card){CLUBS, 10};
+    this->weapon = Card{CLUBS, 10};
     this->isDead = false;
   }
 

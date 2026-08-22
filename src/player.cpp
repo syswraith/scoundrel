@@ -1,5 +1,5 @@
-#include "player.hpp"
-#include "card.hpp"
+#include "../include/player.hpp"
+#include "../include/card.hpp"
 #include <algorithm>
 #include <iostream>
 

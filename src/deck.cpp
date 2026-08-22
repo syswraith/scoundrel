@@ -1,5 +1,5 @@
-#include "deck.hpp"
-#include "card.hpp"
+#include "../include/deck.hpp"
+#include "../include/card.hpp"
 #include <deque>
 #include <vector>
 #include <ctime>
@@ -25,13 +25,13 @@ void Deck::ShuffleDeck(std::deque<Card> deck)
     // selectively push cards in it?
 
     for (int i = 2; i < 15; i++) {
-        cards.push_back((Card){ .type = SPADES, .value = i});
-        cards.push_back((Card){ .type = CLUBS, .value = i});
+        cards.push_back(Card{ SPADES, i});
+        cards.push_back(Card{ CLUBS, i});
     }
 
     for (int i = 2; i < 11; i++) {
-        cards.push_back((Card){ .type = DIAMONDS, .value = i});
-        cards.push_back((Card){ .type = HEARTS, .value = i});
+        cards.push_back(Card{ DIAMONDS,  i});
+        cards.push_back(Card{ HEARTS, i});
     }
 
     srand(time(0));

@@ -1,5 +1,5 @@
-#include "deck.hpp"
-#include "player.hpp"
+#include "../include/deck.hpp"
+#include "../include/player.hpp"
 #include <iostream>
 
 int main(void)
