@@ -15,8 +15,6 @@ struct Player
 
   Player();
 
-  ~Player() {}
-
     void Print();
     void DecreaseHealth(int damage);
     void AttackBare(const Card &card);
@@ -24,10 +22,10 @@ struct Player
     void IncreaseHealth(int restore);
     void EquipWeapon(const Card &card);
     void DrinkPotion(const Card &card);
-
+    void Pick(Card &card);
 
     void PushMonster(const Card &card);
     void DiscardMonsters();
-
+    void DiscardWeapon();
 
 };

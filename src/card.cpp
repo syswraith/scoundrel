@@ -52,8 +52,8 @@ std::string Card::ReturnCardValueString(int value)
 
 void Card::Print(Card card)
 {
-    if (card.value != 0) {
-        std::cout << ReturnColor(card.type) << ReturnString(card.type) << ReturnCardValueString(card.value) << RESET << '\n';
+    if (card.type != NONE) {
+        std::cout << ReturnColor(card.type) << ReturnString(card.type) << ReturnCardValueString(card.value) << RESET;
     }
 }
 

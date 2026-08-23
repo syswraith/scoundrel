@@ -3,36 +3,28 @@
 #include <algorithm>
 #include <iostream>
 
-
-Player::Player()
-{
-    this->health = maxHealth;
-    this->weapon = Card{CLUBS, 10};
-    this->isDead = false;
-
-}
-
 void Player::Print()
 {
     std::cout << "Player stats:\n";
     std::cout << "Health: " << this->health << '\n';
 
     std::cout << "Weapon: " << Card::ReturnColor(this->weapon.type) << Card::ReturnString(this->weapon.type) << this->weapon.value << RESET << '\n';
- 
+
 
     if (!this->monsterStackCount) {
         std::cout << "No monsters.\n";
         return;
     }
 
-   std::cout << "Monster stack:\n";
+    std::cout << "Monster stack: ";
 
     for (int i = 0; i < this->monsterStackCount; i++) {
         Card::Print(this->monsterStack[i]);
+        std::cout << ' ';
     }
+
+    std::cout << '\n';
 }
-
-
 
 void Player::DecreaseHealth(int damage)
 {
@@ -52,6 +44,7 @@ void Player::AttackBare(const Card &card)
 void Player::AttackWeapon(const Card &card)
 {
     Card::Print(card);
+    std::cout << '\n';
 
     int damage = card.value;
     int weaponDamage = this->weapon.value;
@@ -88,7 +81,14 @@ void Player::IncreaseHealth(int restore)
 
 void Player::EquipWeapon(const Card &card)
 {
-    this->weapon = card;
+    if (card.type == DIAMONDS) {
+        this->weapon = card;
+        return;
+    }
+
+    std::cout << "Cannot equip ";
+    Card::Print(card);
+    std::cout << " as weapon\n";
 }
 
 void Player::DrinkPotion(const Card &card)
@@ -107,4 +107,35 @@ void Player::DiscardMonsters()
     this->monsterStackCount = 0;
 }
 
+void Player::DiscardWeapon()
+{
+    DiscardMonsters();
+    this->weapon = Card{NONE, 0};
+}
 
+void Player::Pick(Card &card)
+{
+    switch (card.type) {
+        case DIAMONDS:
+            Player::EquipWeapon(card);
+            break;
+        case HEARTS:
+            Player::DrinkPotion(card);
+            break;
+        case SPADES:
+        case CLUBS:
+            Player::AttackWeapon(card);
+            break;
+        case NONE:
+            break;
+    }
+
+    card = Card {NONE, 0};
+}
+
+Player::Player()
+{
+    this->health = maxHealth;
+    this->weapon = Card{NONE, 0};
+    this->isDead = false;
+}

@@ -25,7 +25,6 @@ struct Card {
     static std::string ReturnColor(CardType type);
     static std::string ReturnCardValueString(int value);
     static void Print(Card card);
-
 };
 
 

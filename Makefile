@@ -1,6 +1,6 @@
 CC := clang++
 
-CFLAGS := -Wall -Wextra -Wpedantic -O0 -g -Iinclude
+CXXFLAGS := -std=c++20 -Wall -Wextra -Wpedantic -Og -g3 -Iinclude -Werror
 LDFLAGS :=
 
 SRC := $(wildcard src/*.cpp)
@@ -25,7 +25,7 @@ run:
 
 $(TARGET): $(SRC)
 	mkdir -p dist
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
+	$(CC) $(CXXFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
 
 test: $(TARGET)
 	$(VALGRIND) ./$(TARGET)

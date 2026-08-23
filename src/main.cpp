@@ -1,26 +1,40 @@
 #include <iostream>
+
 #include "../include/deck.hpp"
 #include "../include/room.hpp"
+#include "../include/player.hpp"
 
 int main(void)
 {
 
     Deck deck;
-
     Room room(deck);
+    Player player;
 
-    std::cout << deck.Size() << '\n';
-    room.Print();
-    room.Run();
-    std::cout << deck.Size() << '\n';
+
     room.Print();
 
-    //Player player;
+    while (!player.isDead)
+    {
+        int choice{};
+        std::cout << "Pick card: ";
+        std::cin >> choice;
 
-    //player.EquipWeapon(Card{DIAMONDS, 10});
-    //player.AttackWeapon(Card{SPADES, 10});
+        player.Pick(room.room[choice]);
+        room.cardsLeft--;
 
-    //player.Print();
+        if (room.cardsLeft == 1)
+            room.LoadNext();
+
+        player.Print();
+        room.Print();
+    }
+
+    if (player.isDead) {
+        std::cout << "Player has died\n";
+    } else {
+        std::cout << "Player has won\n";
+    }
 
     return 0;
 }
