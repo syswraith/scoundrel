@@ -6,7 +6,7 @@
 #include <ctime>
 
 
-void Deck::PushDeck(Card card)
+void Deck::PushDeck(const Card &card)
 {
     this->deck.push_back(card);
 }

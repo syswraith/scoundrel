@@ -8,7 +8,8 @@ struct Deck
 {
         std::deque<Card> deck;
 
-        void PushDeck(Card card);
+
+        void PushDeck(const Card &card);
         Card PopDeck();
         void ShuffleDeck();
         size_t Size();

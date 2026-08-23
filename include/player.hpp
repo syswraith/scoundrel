@@ -19,14 +19,14 @@ struct Player
 
     void Print();
     void DecreaseHealth(int damage);
-    void AttackBare(Card card);
-    void AttackWeapon(Card card);
+    void AttackBare(const Card &card);
+    void AttackWeapon(const Card &card);
     void IncreaseHealth(int restore);
-    void EquipWeapon(Card card);
-    void DrinkPotion(Card card);
+    void EquipWeapon(const Card &card);
+    void DrinkPotion(const Card &card);
 
 
-    void PushMonster(Card card);
+    void PushMonster(const Card &card);
     void DiscardMonsters();
 
 

@@ -43,13 +43,13 @@ void Player::DecreaseHealth(int damage)
     }
 }
 
-void Player::AttackBare(Card card)
+void Player::AttackBare(const Card &card)
 {
     DecreaseHealth(card.value);
     std::cout << "Player attacked bare-handed!\n";
 }
 
-void Player::AttackWeapon(Card card)
+void Player::AttackWeapon(const Card &card)
 {
     Card::Print(card);
 
@@ -86,18 +86,18 @@ void Player::IncreaseHealth(int restore)
     this->health = std::min(this->health + restore, Player::maxHealth);
 }
 
-void Player::EquipWeapon(Card card)
+void Player::EquipWeapon(const Card &card)
 {
     this->weapon = card;
 }
 
-void Player::DrinkPotion(Card card)
+void Player::DrinkPotion(const Card &card)
 {
     IncreaseHealth(card.value);
 }
 
 
-void Player::PushMonster(Card card)
+void Player::PushMonster(const Card &card)
 {
     this->monsterStack[this->monsterStackCount++] = card;
 }
