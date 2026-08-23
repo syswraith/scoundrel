@@ -15,6 +15,9 @@ int main(void)
         Card::PrintCard(card);
     }
 
+    player.EquipWeapon(Card{DIAMONDS, 10});
+    player.AttackWeapon(Card{SPADES, 10});
+
     player.PrintStats();
 
 
