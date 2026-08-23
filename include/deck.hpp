@@ -1,9 +1,8 @@
 #include <deque>
 #include "card.hpp"
 
-class Deck 
+struct Deck 
 {
-    public:
         std::deque<Card> deck;
 
         void PushDeck(Card card);

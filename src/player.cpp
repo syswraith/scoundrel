@@ -4,6 +4,14 @@
 #include <iostream>
 
 
+Player::Player()
+{
+    this->health = maxHealth;
+    this->weapon = Card{CLUBS, 10};
+    this->isDead = false;
+
+}
+
 void Player::PrintStats()
 {
     std::cout << "Player stats:\n";

@@ -2,24 +2,18 @@
 
 #include "card.hpp"
 
-class Player 
+struct Player 
 {
 
-    static constexpr int maxHealth = 20;
+  static constexpr int maxHealth = 20;
 
-public:
   int health;
   Card weapon;
   bool isDead;
   Card monsterStack[44];
   int monsterStackCount{};
 
-  Player() 
-  {
-    this->health = maxHealth;
-    this->weapon = Card{CLUBS, 10};
-    this->isDead = false;
-  }
+  Player();
 
   ~Player() {}
 
