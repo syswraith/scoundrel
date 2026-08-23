@@ -12,7 +12,7 @@ Player::Player()
 
 }
 
-void Player::PrintStats()
+void Player::Print()
 {
     std::cout << "Player stats:\n";
     std::cout << "Health: " << this->health << '\n';
@@ -28,7 +28,7 @@ void Player::PrintStats()
    std::cout << "Monster stack:\n";
 
     for (int i = 0; i < this->monsterStackCount; i++) {
-        Card::PrintCard(this->monsterStack[i]);
+        Card::Print(this->monsterStack[i]);
     }
 }
 
@@ -51,7 +51,7 @@ void Player::AttackBare(Card card)
 
 void Player::AttackWeapon(Card card)
 {
-    Card::PrintCard(card);
+    Card::Print(card);
 
     int damage = card.value;
     int weaponDamage = this->weapon.value;

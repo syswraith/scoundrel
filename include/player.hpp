@@ -17,7 +17,7 @@ struct Player
 
   ~Player() {}
 
-    void PrintStats();
+    void Print();
     void DecreaseHealth(int damage);
     void AttackBare(Card card);
     void AttackWeapon(Card card);

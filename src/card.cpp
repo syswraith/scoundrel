@@ -50,7 +50,7 @@ std::string Card::ReturnCardValueString(int value)
 
 }
 
-void Card::PrintCard(Card card)
+void Card::Print(Card card)
 {
     if (card.value != 0) {
         std::cout << ReturnColor(card.type) << ReturnString(card.type) << ReturnCardValueString(card.value) << RESET << '\n';

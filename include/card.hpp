@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <string>
 
 #define RESET   "\033[0m"
@@ -18,12 +19,12 @@ enum CardType {
 
 struct Card {
     CardType type;
-    int value;
+    size_t value;
 
     static std::string ReturnString(CardType type);
     static std::string ReturnColor(CardType type);
     static std::string ReturnCardValueString(int value);
-    static void PrintCard(Card card);
+    static void Print(Card card);
 
 };
 
