@@ -269,7 +269,7 @@ Element BuildGameOver(GameState& state) {
             "⡴⡤⡤⣤⡤⡤⣤⣤⢠⣤⣤⠀⢰⡄⣤⣶⡴⢶⣶⡴",
         };
         for (auto& line : grave)
-            e.push_back(text(line) | color(Color::GrayDark) | center);
+            e.push_back(text(line) | color(Color::Red) | center);
         e.push_back(text(""));
         e.push_back(text("YOU HAVE PERISHED") | color(Color::Red) | bold | center);
         e.push_back(text(""));
