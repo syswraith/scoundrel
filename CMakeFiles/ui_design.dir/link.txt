@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/ui_design.dir/link.d CMakeFiles/ui_design.dir/src/ui_design.cpp.o -o ui_design  /usr/local/lib/libftxui-screen.a /usr/local/lib/libftxui-dom.a /usr/local/lib/libftxui-component.a /usr/local/lib/libftxui-dom.a /usr/local/lib/libftxui-screen.a

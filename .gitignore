@@ -56,3 +56,9 @@ dkms.conf
 
 dist/
 *.out
+*.ts
+Makefile
+CMakeFiles/
+CTestTestfile.cmake
+cmake_install.cmake
+build/
