@@ -1,6 +1,7 @@
 #include "../include/deck.hpp"
 #include "../include/card.hpp"
 #include <cstddef>
+#include <cstdlib>
 #include <deque>
 #include <vector>
 #include <ctime>
@@ -13,6 +14,9 @@ void Deck::PushDeck(const Card &card)
 
 Card Deck::PopDeck()
 {
+    if (this->deck.empty())
+        return Card{ NONE, 0 };
+
     Card card = this->deck.front();
     this->deck.pop_front();
     return card;
@@ -27,15 +31,11 @@ void Deck::ShuffleDeck()
 {
     std::vector<Card> cards;
 
-    // selectively push cards in it?
-
+    // Standard 52-card deck, no jokers.
     for (size_t i = 2; i < 15; i++) {
         cards.push_back(Card{ SPADES, i});
         cards.push_back(Card{ CLUBS, i});
-    }
-
-    for (size_t i = 2; i < 11; i++) {
-        cards.push_back(Card{ DIAMONDS,  i});
+        cards.push_back(Card{ DIAMONDS, i});
         cards.push_back(Card{ HEARTS, i});
     }
 

@@ -1,119 +1,82 @@
 #include "../include/player.hpp"
-#include "../include/card.hpp"
 #include <algorithm>
-#include <iostream>
-
-void Player::Print()
-{
-    std::cout << "Player stats:\n";
-    std::cout << "Health: " << this->health << '\n';
-
-    std::cout << "Weapon: " << Card::ReturnColor(this->weapon.type) << Card::ReturnString(this->weapon.type) << this->weapon.value << RESET << '\n';
-
-
-    if (!this->monsterStackCount) {
-        std::cout << "No monsters.\n";
-        return;
-    }
-
-    std::cout << "Monster stack: ";
-
-    for (int i = 0; i < this->monsterStackCount; i++) {
-        Card::Print(this->monsterStack[i]);
-        std::cout << ' ';
-    }
-
-    std::cout << '\n';
-}
 
 void Player::DecreaseHealth(int damage)
 {
-    this->health -= damage;
+    this->health = std::max(0, this->health - damage);
 
     if (this->health <= 0) {
         this->isDead = true;
     }
 }
 
-void Player::AttackBare(const Card &card)
-{
-    DecreaseHealth(card.value);
-    std::cout << "Player attacked bare-handed!\n";
-}
-
 void Player::AttackWeapon(const Card &card)
 {
-    Card::Print(card);
-    std::cout << '\n';
-
-    int damage = card.value;
-    int weaponDamage = this->weapon.value;
-    int damageLeft = 0;
-
-    if (this->monsterStackCount == 0) {
-        damageLeft = damage - weaponDamage;
-    } else {
-        int topCard = this->monsterStack[this->monsterStackCount - 1].value;
-        if (topCard > damage) {
-            damageLeft = damage - weaponDamage;
-        } else {
-            std::cout << YELLOW << "Can't damage!" << RESET << '\n';
-            return;
-        }
+    // Without a weapon the player takes the monster's full value.
+    if (this->weapon.type == NONE) {
+        DecreaseHealth(static_cast<int>(card.value));
+        return;
     }
 
-    if (damageLeft > 0) {
-        DecreaseHealth(damageLeft);
-    }
+    // Every monster previously defeated with this weapon drains its
+    // effectiveness: effective = weapon value - total stack value.
+    int totalStack = 0;
+    for (int i = 0; i < this->monsterStackCount; i++)
+        totalStack += static_cast<int>(this->monsterStack[i].value);
 
+    int effectiveWeapon = static_cast<int>(this->weapon.value) - totalStack;
+    int damage = static_cast<int>(card.value) - effectiveWeapon;
+    if (damage < 0)
+        damage = 0;
+
+    DecreaseHealth(damage);
+
+    this->isBound = true;
     PushMonster(card);
+}
+
+void Player::AttackBare(const Card &card)
+{
+    DecreaseHealth(static_cast<int>(card.value));
 }
 
 void Player::IncreaseHealth(int restore)
 {
-    if (this->health >= Player::maxHealth) {
-        std::cout << YELLOW << "Player has max health!" << RESET << '\n';
+    if (this->health >= Player::maxHealth)
         return;
-    }
 
     this->health = std::min(this->health + restore, Player::maxHealth);
 }
 
 void Player::EquipWeapon(const Card &card)
 {
-    if (card.type == DIAMONDS) {
-        this->weapon = card;
+    if (card.type != DIAMONDS)
         return;
-    }
 
-    std::cout << "Cannot equip ";
-    Card::Print(card);
-    std::cout << " as weapon\n";
+    this->weapon = card;
+    this->isBound = false;
+    this->monsterStackCount = 0;
 }
 
 void Player::DrinkPotion(const Card &card)
 {
-    IncreaseHealth(card.value);
+    if (potionsPerRoom >= maxPotionsPerRoom)
+        return;
+    potionsPerRoom++;
+    IncreaseHealth(static_cast<int>(card.value));
 }
 
+void Player::ResetPotionsPerRoom()
+{
+    potionsPerRoom = 0;
+}
 
 void Player::PushMonster(const Card &card)
 {
     this->monsterStack[this->monsterStackCount++] = card;
 }
 
-void Player::DiscardMonsters()
-{
-    this->monsterStackCount = 0;
-}
-
-void Player::DiscardWeapon()
-{
-    DiscardMonsters();
-    this->weapon = Card{NONE, 0};
-}
-
-void Player::Pick(Card &card)
+void Player::Pick(Card &card, bool bareFight)
 {
     switch (card.type) {
         case DIAMONDS:
@@ -124,7 +87,11 @@ void Player::Pick(Card &card)
             break;
         case SPADES:
         case CLUBS:
-            Player::AttackWeapon(card);
+            if (bareFight)
+                Player::AttackBare(card);
+            else
+                Player::AttackWeapon(card);
+            ResetPotionsPerRoom();
             break;
         case NONE:
             break;
@@ -138,4 +105,6 @@ Player::Player()
     this->health = maxHealth;
     this->weapon = Card{NONE, 0};
     this->isDead = false;
+    this->isBound = false;
+    this->potionsPerRoom = 0;
 }

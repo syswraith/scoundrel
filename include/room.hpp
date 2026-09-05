@@ -3,17 +3,17 @@
 #include "../include/card.hpp"
 #include "../include/deck.hpp"
 #include <cstddef>
+#include <vector>
 
 class Room {
     Deck &deck;
     void Load();
-    bool hasRun;
 
     public:
     Card room[4];
     size_t cardsLeft;
+    bool isComplete;
     void LoadNext();
     void Run();
-    void Print();
     Room(Deck &deck_ref);
 };

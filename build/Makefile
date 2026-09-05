@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/syswraith/code/scoundrel
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/syswraith/code/scoundrel
+CMAKE_BINARY_DIR = /home/syswraith/code/scoundrel/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,9 +97,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/syswraith/code/scoundrel/CMakeFiles /home/syswraith/code/scoundrel//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/syswraith/code/scoundrel/build/CMakeFiles /home/syswraith/code/scoundrel/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/syswraith/code/scoundrel/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/syswraith/code/scoundrel/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -138,43 +138,6 @@ main: cmake_check_build_system
 main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
-
-#=============================================================================
-# Target rules for targets named ui_design
-
-# Build rule for target.
-ui_design: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ui_design
-.PHONY : ui_design
-
-# fast build rule for target.
-ui_design/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ui_design.dir/build.make CMakeFiles/ui_design.dir/build
-.PHONY : ui_design/fast
-
-src/card.o: src/card.cpp.o
-.PHONY : src/card.o
-
-# target to build an object file
-src/card.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/card.cpp.o
-.PHONY : src/card.cpp.o
-
-src/card.i: src/card.cpp.i
-.PHONY : src/card.i
-
-# target to preprocess a source file
-src/card.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/card.cpp.i
-.PHONY : src/card.cpp.i
-
-src/card.s: src/card.cpp.s
-.PHONY : src/card.s
-
-# target to generate assembly for a file
-src/card.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/card.cpp.s
-.PHONY : src/card.cpp.s
 
 src/deck.o: src/deck.cpp.o
 .PHONY : src/deck.o
@@ -272,30 +235,6 @@ src/room.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/room.cpp.s
 .PHONY : src/room.cpp.s
 
-src/ui_design.o: src/ui_design.cpp.o
-.PHONY : src/ui_design.o
-
-# target to build an object file
-src/ui_design.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ui_design.dir/build.make CMakeFiles/ui_design.dir/src/ui_design.cpp.o
-.PHONY : src/ui_design.cpp.o
-
-src/ui_design.i: src/ui_design.cpp.i
-.PHONY : src/ui_design.i
-
-# target to preprocess a source file
-src/ui_design.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ui_design.dir/build.make CMakeFiles/ui_design.dir/src/ui_design.cpp.i
-.PHONY : src/ui_design.cpp.i
-
-src/ui_design.s: src/ui_design.cpp.s
-.PHONY : src/ui_design.s
-
-# target to generate assembly for a file
-src/ui_design.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ui_design.dir/build.make CMakeFiles/ui_design.dir/src/ui_design.cpp.s
-.PHONY : src/ui_design.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -306,10 +245,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... main"
-	@echo "... ui_design"
-	@echo "... src/card.o"
-	@echo "... src/card.i"
-	@echo "... src/card.s"
 	@echo "... src/deck.o"
 	@echo "... src/deck.i"
 	@echo "... src/deck.s"
@@ -322,9 +257,6 @@ help:
 	@echo "... src/room.o"
 	@echo "... src/room.i"
 	@echo "... src/room.s"
-	@echo "... src/ui_design.o"
-	@echo "... src/ui_design.i"
-	@echo "... src/ui_design.s"
 .PHONY : help
 
 

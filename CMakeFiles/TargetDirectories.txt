@@ -1,0 +1,5 @@
+/home/syswraith/code/scoundrel/CMakeFiles/main.dir
+/home/syswraith/code/scoundrel/CMakeFiles/ui_design.dir
+/home/syswraith/code/scoundrel/CMakeFiles/test.dir
+/home/syswraith/code/scoundrel/CMakeFiles/edit_cache.dir
+/home/syswraith/code/scoundrel/CMakeFiles/rebuild_cache.dir

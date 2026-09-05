@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/syswraith/code/scoundrel/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

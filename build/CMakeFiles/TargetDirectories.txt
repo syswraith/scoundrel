@@ -1,0 +1,4 @@
+/home/syswraith/code/scoundrel/build/CMakeFiles/main.dir
+/home/syswraith/code/scoundrel/build/CMakeFiles/test.dir
+/home/syswraith/code/scoundrel/build/CMakeFiles/edit_cache.dir
+/home/syswraith/code/scoundrel/build/CMakeFiles/rebuild_cache.dir
