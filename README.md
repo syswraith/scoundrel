@@ -7,6 +7,8 @@ A standard 52-card deck (no jokers) represents a dungeon. Four cards are dealt
 as a room; clear each room until the deck runs out. Survive without reaching
 0 HP — **Score** is your remaining HP.
 
+![Gameplay](game.png) ![Game over](rip.png)
+
 ## Rules
 
 - **Deck**: 52 cards — ♠♣♦♥ each 2–14. Cards are dealt into rooms of 4.
